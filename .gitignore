@@ -1,24 +1,43 @@
-# Python
+# ============================================================================
+# WHITELIST .gitignore for this working folder.
+#
+# This folder contains material that must NEVER be published: clinical OSA data,
+# the submitted manuscript PDF, reviewer comments, internal docs, the IntelELM
+# library clone, and generated results. To make an accidental commit impossible,
+# we IGNORE EVERYTHING by default and then explicitly allow ONLY the files that
+# belong in the public repository.
+#
+# Consequence: a brand-new file you create here will be ignored unless you add it
+# to the allow-list below. That is intentional.
+# ============================================================================
+
+# Ignore everything at the repository root...
+/*
+
+# ...but keep these repository files:
+!/.gitignore
+!/README.md
+!/requirements.txt
+!/LICENSE
+!/config.py
+!/data_utils.py
+!/models.py
+!/experiment.py
+!/reporting.py
+!/main_baselines.ipynb
+!/preprocess_kaggle_data.ipynb
+
+# Public SDB data only — OSA clinical data stays ignored
+!/Dataset/
+/Dataset/*
+!/Dataset/sdb_dataset.csv
+
+# Metaheuristic-ELM source modules + entry notebook only
+!/ELM_MHs Framework/
+/ELM_MHs Framework/*
+!/ELM_MHs Framework/*.py
+!/ELM_MHs Framework/main_mha.ipynb
+
+# Caches (belt-and-suspenders)
 __pycache__/
-*.py[cod]
-*.egg-info/
 .ipynb_checkpoints/
-
-# Generated experiment outputs (regenerate by running the notebooks)
-Results/
-Results_MHA/
-
-# OS / editor cruft
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-
-# --- Restricted clinical data: NEVER commit ---
-# The OSA dataset is available from the corresponding author on reasonable
-# request only (see README, Data availability). If you place it in Dataset/
-# to run the OSA experiments, these rules keep it out of git.
-Dataset/OSA-data.csv
-Dataset/revised-data-*.csv
-Dataset/list of datasets.xlsx
-*.rar
