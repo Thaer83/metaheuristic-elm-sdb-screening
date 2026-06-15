@@ -31,6 +31,8 @@ The study trains a lightweight **Extreme Learning Machine (ELM)** whose hidden-l
 | **SDB** | 500 | 10 | **Included** (`Dataset/sdb_dataset.csv`). Derived from the public Kaggle dataset [ziya07/sleep-disordered-breathing-detection](https://www.kaggle.com/datasets/ziya07/sleep-disordered-breathing-detection). |
 | **OSA** | 274 | 31 | **Not included.** Clinical data available from the corresponding author on reasonable request, subject to data-sharing restrictions. |
 
+> **Reproducibility scope:** the study uses **two** datasets, but only **SDB** is publicly redistributable. The SDB experiments therefore reproduce **end-to-end from this repository** (data + code). The **OSA** experiments require the restricted OSA dataset, which is **not** included here — obtain `OSA-data.csv` from the corresponding author (see [Data availability & ethics](#data-availability--ethics)), place it in `Dataset/`, and point the configs at it.
+
 `Dataset/sdb_dataset.csv` is the model-ready file (10 numeric predictors + binary `Diagnosis_of_SDB`, where Mild/Moderate/Severe → 1 and None → 0). To regenerate it from scratch, download the raw file from the Kaggle link above and run `preprocess_kaggle_data.ipynb`.
 
 To run the **OSA** experiments, obtain `OSA-data.csv` from the corresponding author, place it in `Dataset/`, and point the configs at it (see below). It is git-ignored so it cannot be committed accidentally.
