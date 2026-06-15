@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Generated experiment outputs (regenerate by running the notebooks)
+Results/
+Results_MHA/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Restricted clinical data: NEVER commit ---
+# The OSA dataset is available from the corresponding author on reasonable
+# request only (see README, Data availability). If you place it in Dataset/
+# to run the OSA experiments, these rules keep it out of git.
+Dataset/OSA-data.csv
+Dataset/revised-data-*.csv
+Dataset/list of datasets.xlsx
+*.rar
