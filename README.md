@@ -23,14 +23,11 @@ The study trains a lightweight **Extreme Learning Machine (ELM)** whose hidden-l
 ├── comparison/                     # Statistical comparison (Wilcoxon) + confusion matrices
 ├── imbalance/                      # Class-imbalance handling on SDB (SMOTE/ADASYN/threshold)
 ├── importance/                     # Permutation + SHAP feature importance
-├── Results/                        # Baseline metric outputs (per-run + aggregates)
-├── Results_MHA/                    # Optimized-ELM metric outputs (curated aggregates)
-├── Results_comparison/             # Statistical-comparison + confusion-matrix outputs
-├── Results_imbalance_SDB/          # Class-imbalance outputs
-├── Results_importance/             # Feature-importance outputs
 ├── requirements.txt
 └── LICENSE
 ```
+
+> This repository ships **code only**; the reported numbers and figures are in the paper. Running the pipelines writes results to local `Results*/` folders (git-ignored).
 
 ## Datasets
 
@@ -85,9 +82,9 @@ python -m imbalance.run_sdb_imbalance   # SMOTE / ADASYN / threshold tuning on S
 python -m importance.run_importance     # permutation + SHAP feature importance         -> Results_importance/
 ```
 
-The statistical comparison runs on the **already-generated** per-run metrics in `Results/` and `Results_MHA/`, so it reproduces the reported tables without re-training. Pre-computed outputs are included in the `Results*` folders for reference.
+The drivers write their outputs to local, git-ignored `Results*/` folders. The statistical comparison consumes the per-run metrics written by the baseline and optimized-ELM pipelines, so run those two pipelines first (which populate `Results/` and `Results_MHA/` locally) before running the comparison driver.
 
-> **Note on the included OSA outputs.** The raw OSA dataset is not redistributable, but the OSA *result* files shipped here (e.g. `Results_MHA/Results OSA/sleep_apnea_test_all_runs.csv`) contain only aggregate per-run metrics and per-feature importance scores — no patient-level data — so the statistical analyses on the OSA results reproduce from this repository even though the OSA experiments cannot be re-run without the restricted data.
+> **OSA vs SDB.** The SDB analyses reproduce end-to-end from this repository. The OSA analyses require the restricted OSA dataset (see [Datasets](#datasets)); without it, the OSA pipelines and the OSA portion of the comparison cannot be regenerated.
 
 ## Models
 
