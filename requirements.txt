@@ -6,10 +6,17 @@ mealpy==3.0.3
 permetrics==2.0.0
 scikit-learn==1.6.1
 imbalanced-learn==0.12.4
+scipy==1.7.3
 xgboost
+
+# Analysis add-ons (statistical comparison, feature importance)
+shap==0.49.1
 
 # Data, plotting, and I/O (less version-sensitive)
 numpy>=1.21
 pandas>=1.4
 matplotlib>=3.5
 openpyxl
+
+# Testing (optional, to run the unit tests under each analysis package)
+pytest==7.1.1

@@ -38,6 +38,71 @@
 !/ELM_MHs Framework/*.py
 !/ELM_MHs Framework/main_mha.ipynb
 
+# ----------------------------------------------------------------------------
+# Revision analysis packages (code + unit tests only; __pycache__ stays ignored)
+# ----------------------------------------------------------------------------
+!/comparison/
+/comparison/*
+!/comparison/*.py
+!/comparison/tests/
+/comparison/tests/*
+!/comparison/tests/*.py
+
+!/imbalance/
+/imbalance/*
+!/imbalance/*.py
+!/imbalance/tests/
+/imbalance/tests/*
+!/imbalance/tests/*.py
+
+!/importance/
+/importance/*
+!/importance/*.py
+!/importance/tests/
+/importance/tests/*
+!/importance/tests/*.py
+
+# ----------------------------------------------------------------------------
+# Generated results needed to reproduce the paper tables/figures.
+# Data and figures only (CSV / XLSX / PNG); manuscript-prose *.md drafts and the
+# 40 MB of per-run subfolders are deliberately left ignored.
+# ----------------------------------------------------------------------------
+
+# Baseline results (small; only metric files live here)
+!/Results/
+
+# Optimized-ELM results: keep the curated aggregates, drop the per-run subfolders
+!/Results_MHA/
+/Results_MHA/*
+!/Results_MHA/Results OSA/
+!/Results_MHA/Results SDB/
+/Results_MHA/Results OSA/*
+/Results_MHA/Results SDB/*
+!/Results_MHA/Results OSA/*.csv
+!/Results_MHA/Results OSA/*.png
+!/Results_MHA/Results OSA/*.xlsx
+!/Results_MHA/Results SDB/*.csv
+!/Results_MHA/Results SDB/*.png
+!/Results_MHA/Results SDB/*.xlsx
+
+# Statistical comparison + confusion matrices (data/figures, not the *.md drafts)
+!/Results_comparison/
+/Results_comparison/*
+!/Results_comparison/*.csv
+!/Results_comparison/*.png
+
+# Class-imbalance analysis (data only, not the *_draft.md)
+!/Results_imbalance_SDB/
+/Results_imbalance_SDB/*
+!/Results_imbalance_SDB/*.csv
+!/Results_imbalance_SDB/*.xlsx
+
+# Feature-importance analysis (data/figures, not the *_draft.md)
+!/Results_importance/
+/Results_importance/*
+!/Results_importance/*.csv
+!/Results_importance/*.png
+
 # Caches (belt-and-suspenders)
 __pycache__/
 .ipynb_checkpoints/

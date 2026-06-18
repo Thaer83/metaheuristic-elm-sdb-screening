@@ -20,6 +20,14 @@ The study trains a lightweight **Extreme Learning Machine (ELM)** whose hidden-l
 │   └── main_mha.ipynb              # MHA-ELM pipeline entry point
 ├── Dataset/
 │   └── sdb_dataset.csv             # Processed SDB data (OSA data is NOT included — see below)
+├── comparison/                     # Statistical comparison (Wilcoxon) + confusion matrices
+├── imbalance/                      # Class-imbalance handling on SDB (SMOTE/ADASYN/threshold)
+├── importance/                     # Permutation + SHAP feature importance
+├── Results/                        # Baseline metric outputs (per-run + aggregates)
+├── Results_MHA/                    # Optimized-ELM metric outputs (curated aggregates)
+├── Results_comparison/             # Statistical-comparison + confusion-matrix outputs
+├── Results_imbalance_SDB/          # Class-imbalance outputs
+├── Results_importance/             # Feature-importance outputs
 ├── requirements.txt
 └── LICENSE
 ```
@@ -66,6 +74,20 @@ jupyter notebook main_mha.ipynb           # Run All
 ELM/optimizer settings (hidden size, activation, objective, search bounds, runs) are in `config_mha.py`; the set of optimizers that run is controlled by `ACTIVE_OPTIMIZERS` in `optimizers_config.py`.
 
 **Switching to the OSA dataset:** set `DATA_PATH`/`TARGET_COL` in `config.py` and `DATA_PATH` in `ELM_MHs Framework/config_mha.py` to your `Dataset/OSA-data.csv` (target column `class`).
+
+## Revision analyses (statistics, imbalance, feature importance)
+
+Three self-contained packages reproduce the additional analyses reported in the paper. Each has a `run_*` driver and unit tests (`pytest <package>`):
+
+```bash
+python -m comparison.run_osa            # statistical comparison + confusion matrices  -> Results_comparison/
+python -m imbalance.run_sdb_imbalance   # SMOTE / ADASYN / threshold tuning on SDB      -> Results_imbalance_SDB/
+python -m importance.run_importance     # permutation + SHAP feature importance         -> Results_importance/
+```
+
+The statistical comparison runs on the **already-generated** per-run metrics in `Results/` and `Results_MHA/`, so it reproduces the reported tables without re-training. Pre-computed outputs are included in the `Results*` folders for reference.
+
+> **Note on the included OSA outputs.** The raw OSA dataset is not redistributable, but the OSA *result* files shipped here (e.g. `Results_MHA/Results OSA/sleep_apnea_test_all_runs.csv`) contain only aggregate per-run metrics and per-feature importance scores — no patient-level data — so the statistical analyses on the OSA results reproduce from this repository even though the OSA experiments cannot be re-run without the restricted data.
 
 ## Models
 
